@@ -16,14 +16,13 @@ public:
         if(grid[n-1][m-1] == '(') {return false;}
         if(grid[0][0] == ')') {return false;}
 
-        // for(int i = 1; i <= n; i++) {
-        //     for(int j = 1; j <= m; j++) {
-        //         for(int k = 0; k <= w + 2; k++) {
-        //             dp[i][j][k] = false;
-        //         }
-        //     }
-        // }
-        memset(dp, 0, sizeof(dp));
+        for(int i = 0; i <= n+1; i++) {
+            for(int j = 0; j <= m+1; j++) {
+                for(int k = 0; k <= w+1; k++) {
+                    dp[i][j][k] = false;
+                }
+            }
+        }
 
         for(int i = n; i >= 1; i--) {
             for(int j = m; j >= 1; j--) {
