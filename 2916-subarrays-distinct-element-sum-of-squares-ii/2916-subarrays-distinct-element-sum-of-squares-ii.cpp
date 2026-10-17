@@ -66,10 +66,10 @@ void applyLazy(ll pos, ll l, ll r) {
 }
 
 Node get(ll pos, ll l, ll r, ll a, ll b) {
-    applyLazy(pos, l, r);
     if(l > b || r < a) {
         return netral;
     }
+    applyLazy(pos, l, r);
     if(a <= l && r <= b) {
         return seg[pos];
     }
