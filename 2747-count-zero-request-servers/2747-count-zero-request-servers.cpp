@@ -5,16 +5,16 @@ ll n, mxt, x;
 ll fen[MAXN], lst[MAXN];
 void add(ll idx, ll x) {
     if(idx == 0) {return ;}
-    for(int i = idx; i <= mxt; i += (i&-i)) {
-        fen[i] += x;
-    }
+    fen[idx]+=x;
 }
 ll get(ll idx) {
-    ll out = 0;
-    for(int i = idx; i > 0; i -= (i&-i)) {
-        out += fen[i];
+    return fen[idx];
+}
+void resolve() {
+    fen[0] = 0;
+    for(int i = 1; i <= mxt; i++) {
+        fen[i] += fen[i-1];
     }
-    return out;
 }
 
 bool cmp(vector<int>& a, vector<int>& b) {
@@ -51,6 +51,8 @@ public:
             add(thigh+1, -1);
             lst[id] = thigh;
         }
+
+        resolve();
 
         vector<int> answer;
         answer.clear();
