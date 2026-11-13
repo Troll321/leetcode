@@ -64,7 +64,7 @@ public:
         pref[0] = 0;
         for(int i=0;i<n;i++) {
             pref[i+1] = pref[i] + nums[i];
-            for(int j=0;j<3;j++){
+            for(int j=1;j<3;j++){
                 fen[j][i]=0;
             }
         }
@@ -80,13 +80,11 @@ public:
                     pll tmp = vec.back();
                     vec.pop_back();
                     if(!vec.empty()) {
-                        update(0, vec.size(), -tmp.se);
                         update(1, vec.size(), -tmp.fi*tmp.se);
                         update(2, vec.size(), -tmp.se*vec.back().fi); 
                     }
                 }
                 if(!vec.empty()) {
-                    update(0, vec.size(), now);
                     update(1, vec.size(), i*now);
                     update(2, vec.size(), now*vec.back().fi);
                 }
